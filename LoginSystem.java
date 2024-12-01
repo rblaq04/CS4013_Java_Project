@@ -45,6 +45,12 @@ public class LoginSystem {
         }
     }
 
+    // Public method to save users to be used from the LoginSystemMenu class
+    public void saveUsers() {
+        saveUsersToCSV(); // Calls the private method to save users
+    }  
+
+
     // Register a new user
     public void registerUser(String username, String password, String role) {
         for (User user : users) {
@@ -56,6 +62,10 @@ public class LoginSystem {
         users.add(new User(username, password, role));
         saveUsersToCSV();
         System.out.println("User registered successfully.");
+    }
+
+    public List<User> getUsers() {
+        return users; // Return the list of users
     }
 
     // Authenticate a user
