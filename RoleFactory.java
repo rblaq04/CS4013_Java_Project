@@ -7,12 +7,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 class RoleFactory {
-    private Map<String, PayScale> fullTimeRoles ;
-    private Map<String, PayScale> partTimeRoles;
+    private Map<String, PayScale> fullTimeRoles = new HashMap<>();
+    private Map<String, PayScale> partTimeRoles = new HashMap<>();;
 
     public RoleFactory(){
-        this.fullTimeRoles  = new HashMap<>();
-        this.partTimeRoles  = new HashMap<>();
+      
 
     }
 
@@ -89,13 +88,17 @@ class RoleFactory {
                 if (choice.equals("F")) {
                     break;
                 } else if (choice.equals("A")) {
+                    if (command.equals("F")) {
                     System.out.println("Enter annual rate for Scale Point " + scale + ":");
+                    } else if (command.equals("P")) {
+                        System.out.println("Enter hourly rate for Scale Point " + scale + ":");
+                    }
                     try {
                         double annualRate = Double.parseDouble(in.nextLine());
                         payScale.addScalePoint(scale, annualRate);
                         scale++;
                     } catch (NumberFormatException e) {
-                        System.out.println("Invalid annual rate. Please enter a number.");
+                        System.out.println("Invalid rate. Please enter a number.");
                     }
                 }
             }
@@ -117,6 +120,16 @@ class RoleFactory {
             return fullTimeRoles.get(description);
         } else if (partTimeRoles.containsKey(description)) {
             return partTimeRoles.get(description);
+        } else {
+            return null;
+        }
+    }
+
+    public String getRoleType(String description) {
+        if (fullTimeRoles.containsKey(description)) {
+            return "F";
+        } else if (partTimeRoles.containsKey(description)) {
+            return "P";
         } else {
             return null;
         }

@@ -46,6 +46,8 @@ public class User {
         return scalePoint;
     }
 
+    
+
     // To String for saving to CSV
     @Override
     public String toString() {
