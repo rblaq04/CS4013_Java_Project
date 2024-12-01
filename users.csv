@@ -1,0 +1,5 @@
+username,password,role
+employee1,pass123,Employee
+admin1,adminpass123,Admin
+hr1,hrpass123,HR
+hr2,hrpass321,HR
