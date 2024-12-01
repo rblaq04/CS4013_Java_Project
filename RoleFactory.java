@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +38,35 @@ class RoleFactory {
             }
         } catch (IOException | NumberFormatException e) {
             System.err.println("Error loading pay scales from CSV: " + e.getMessage());
+        }
+    }
+
+     public void savePayScalesToCSV(String filePath) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            for (String description : fullTimeRoles.keySet()) {
+                PayScale payScale = fullTimeRoles.get(description);
+                for (Map.Entry<Integer, Double> entry : payScale.getScalePoints().entrySet()) {
+                    int scalePoint = entry.getKey();
+                    double annualRate = entry.getValue();
+                    bw.write(description + "," + scalePoint + "," + annualRate);
+                    bw.newLine();
+                }
+            }
+
+           
+            for (String description : partTimeRoles.keySet()) {
+                PayScale payScale = partTimeRoles.get(description);
+                for (Map.Entry<Integer, Double> entry : payScale.getScalePoints().entrySet()) {
+                    int scalePoint = entry.getKey();
+                    double annualRate = entry.getValue();
+                    bw.write(description + "," + scalePoint + "," + annualRate);
+                    bw.newLine();
+                }
+            }
+
+            System.out.println("Pay scales successfully saved to CSV.");
+        } catch (IOException e) {
+            System.err.println("Error saving pay scales to CSV: " + e.getMessage());
         }
     }
 
