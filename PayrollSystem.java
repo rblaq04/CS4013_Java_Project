@@ -67,7 +67,7 @@ public class PayrollSystem {
     private void calculateUSC() {
         if (this.grossPay <= 12012) {
             this.usc = this.grossPay * 0.005;
-        } else if (this.grossPay <= 21295) {
+        } else if (this.grossPay <= 25760) {
             double firstBand = 12012 * 0.005;
             double secondBand = (this.grossPay - 12012) * 0.02;
             this.usc = firstBand + secondBand;
@@ -98,7 +98,11 @@ public class PayrollSystem {
 
     // Method to calculate PRSI
     private void calculatePRSI() {
-        this.prsi = this.grossPay * 0.04;
+        if(grossPay/52 <= 352){
+            this.prsi = 0;
+        }else{
+            this.prsi = this.grossPay * 0.04;
+        }
     }
 
     
