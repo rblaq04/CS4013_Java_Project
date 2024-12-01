@@ -1,3 +1,4 @@
+// This is a class for a user in the payroll system (an employee, HR, or admin)
 public class User {
     private String username;
     private String password;
