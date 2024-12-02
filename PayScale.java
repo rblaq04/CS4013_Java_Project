@@ -30,7 +30,7 @@ class PayScale {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(description).append("\n");
+        sb.append(getDescription()).append("\n");
         for (Map.Entry<Integer, Double> entry : scalePoints.entrySet()) {
             sb.append(entry.getKey()).append(": ").append(entry.getValue()).append("\n");
         }

@@ -23,7 +23,7 @@ public class PayrollSystem {
 
     // Method to calculate net pay after all deductions
     public double calculateNetPay(User user) {
-        String role = user.getRole();
+        String role = user.getRoleType();
         int scalePoint = user.getScalePoint();
          hrsWorked = user.getHrsWorked();
         PayScale payScale = roleFactory.getPayScale(role);
