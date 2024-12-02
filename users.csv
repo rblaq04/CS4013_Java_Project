@@ -1,6 +1,6 @@
 username,password,userType,position,roleType,hrsWorked,scalePoint
 smartypantsprofessor,pass123,Employee,FULL PROFESSOR,F,40.0,2
-michaelenglish,PhD31Aug2007,Admin,ASSOCIATE PROFESSOR,F,40.0,3
+michaelenglish,javaIsV3ryC00l,Admin,ASSOCIATE PROFESSOR,F,40.0,3
 harryrichards,hrpass123,HR,SENIOR ADMINISTRATOR,F,40.0,1
 hollyrobertson,hrpass321,HR,SERVICE STAFF,F,40.0,3
 gkeeperwilly,secureEmpPass321,Employee,GROUNDSWORKPERSON,F,40.0,2
