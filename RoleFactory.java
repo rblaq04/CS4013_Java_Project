@@ -1,6 +1,11 @@
-import java.io.*;
-import java.util.*;
-
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 class RoleFactory {
     private Map<String, PayScale> fullTimeRoles = new HashMap<>();
     private Map<String, PayScale> partTimeRoles = new HashMap<>();;
@@ -64,14 +69,17 @@ class RoleFactory {
 
 
     public void addRole() {
+        
         Scanner in = new Scanner(System.in);
         System.out.println("Add F)ull-time role or P)art-time role?");
         String command = in.nextLine().toUpperCase();
-
         if (command.equals("F") || command.equals("P")) {
-            System.out.println("Enter Role Description:");
+
+            System.out.println("Enter Role Name:");
             String description = in.nextLine();
             PayScale payScale = new PayScale(description);
+            
+            
 
             int scale = 1;
             while (true) {
@@ -108,20 +116,20 @@ class RoleFactory {
         }
     }
 
-    public PayScale getPayScale(String description) {
-        if (fullTimeRoles.containsKey(description)) {
-            return fullTimeRoles.get(description);
-        } else if (partTimeRoles.containsKey(description)) {
-            return partTimeRoles.get(description);
+    public PayScale getPayScale(String name) {
+        if (fullTimeRoles.containsKey(name)) {
+            return fullTimeRoles.get(name);
+        } else if (partTimeRoles.containsKey(name)) {
+            return partTimeRoles.get(name);
         } else {
             return null;
         }
     }
 
-    public String getRoleType(String description) {
-        if (fullTimeRoles.containsKey(description)) {
+    public String getRoleType(String name) {
+        if (fullTimeRoles.containsKey(name)) {
             return "F";
-        } else if (partTimeRoles.containsKey(description)) {
+        } else if (partTimeRoles.containsKey(name)) {
             return "P";
         } else {
             return null;
