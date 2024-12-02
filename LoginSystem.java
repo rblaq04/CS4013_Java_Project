@@ -11,12 +11,7 @@ public class LoginSystem {
         this.users = new ArrayList<>();
         loadUsersFromCSV();
     }
-
-    //Getter for array list of users
-    public List<User> getUsers(){
-        return users;
-    }
-    
+ 
     // Load users from CSV
     private void loadUsersFromCSV() {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
