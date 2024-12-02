@@ -1,8 +1,8 @@
-username,password,role,hrsWorked,scalePoint
-employee1,pass123,Employee,0.0,0
-admin1,adminpass123,Admin,0.0,0
-hr1,hrpass123,HR,0.0,0
-hr2,hrpass321,HR,0.0,0
-emp2,secureEmpPass321,Employee,0.0,0
-emp3,supersecurepass,Employee,0.0,0
-hr3,hrpass1234,HR,0.0,0
+username,password,userType,roleType,hrsWorked,scalePoint
+employee1,pass123,Employee,F,0.0,0
+admin1,adminpass123,Admin,F,0.0,0
+hr1,hrpass123,HR,F,0.0,0
+hr2,hrpass321,HR,F,0.0,0
+emp2,secureEmpPass321,Employee,F,0.0,0
+emp3,supersecurepass,Employee,P,0.0,0
+hr3,hrpass1234,HR,F,0.0,0

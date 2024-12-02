@@ -41,7 +41,7 @@ public class LoginSystemMenu {
 
         User loggedInUser = loginSystem.authenticate(username, password);
         if (loggedInUser != null) {
-            System.out.println("Welcome, " + loggedInUser.getUsername() + " (" + loggedInUser.getRole() + ")");
+            System.out.println("Welcome, " + loggedInUser.getUsername() + " (" + loggedInUser.getUserType() + ")");
             handleUserActions(scanner, loggedInUser);
         } else {
             System.out.println("Invalid username or password.");
@@ -49,8 +49,8 @@ public class LoginSystemMenu {
     }
 
     private void handleUserActions(Scanner scanner, User user) {
-        // Handle the actions for different roles
-        switch (user.getRole()) {
+        // Handle the actions for different userTypes
+        switch (user.getUserType()) {
             case "Employee":
                 handleEmployeeActions(scanner, user); // Employee can access Employee options
                 break;
@@ -63,7 +63,7 @@ public class LoginSystemMenu {
                 handleAdminActions(scanner); // Admin actions
                 break;
             default:
-                System.out.println("Invalid role. Contact system administrator.");
+                System.out.println("Invalid userType. Contact system administrator.");
         }
     }
 
@@ -101,15 +101,17 @@ public class LoginSystemMenu {
                     String username = scanner.nextLine();
                     System.out.println("Enter password:");
                     String password = scanner.nextLine();
-                    System.out.println("Enter role (Employee/HR/Admin):");
-                    String role = scanner.nextLine();
+                    System.out.println("Enter userType (Employee/HR/Admin):");
+                    String userType = scanner.nextLine();
+                    System.out.println("Enter roleType ((F)ull-time/(P)art-time):");
+                    String roleType = scanner.nextLine();
                     System.out.println("Enter hours worked so far (can be 0):");
                     String stringHrsWorked = scanner.nextLine();
                     double hrsWorked = Double.parseDouble(stringHrsWorked);
                     System.out.println("Enter scale point:");
                     String stringScalePoint = scanner.nextLine();
                     int scalePoint = Integer.parseInt(stringScalePoint);
-                    loginSystem.registerUser(username, password, role, hrsWorked, scalePoint);
+                    loginSystem.registerUser(username, password, userType, roleType, hrsWorked, scalePoint);
                     break;
                 case 2:
                     return; // Logout
@@ -152,8 +154,8 @@ public class LoginSystemMenu {
             }
         }
     
-        if (user == null || !user.getRole().equalsIgnoreCase("Employee")) {
-            System.out.println("Employee not found or invalid role.");
+        if (user == null || !user.getUserType().equalsIgnoreCase("Employee")) {
+            System.out.println("Employee not found or invalid userType.");
             return;
         }
     

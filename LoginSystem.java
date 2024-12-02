@@ -23,10 +23,12 @@ public class LoginSystem {
                     continue;
                 }
                 String[] parts = line.split(",");
-                double doublePart = Double.parseDouble(parts[3]);
-                int intPart = Integer.parseInt(parts[4]);
-                if (parts.length == 5) {
-                    users.add(new User(parts[0], parts[1], parts[2], doublePart, intPart));
+                double doublePart = Double.parseDouble(parts[4]);
+                int intPart = Integer.parseInt(parts[5]);
+                if (parts.length == 6) {
+                    users.add(new User(parts[0], parts[1], parts[2], parts[3], doublePart, intPart));
+                } else {
+                    System.out.println("Failed to load users from CSV.");
                 }
             }
         } catch (IOException e) {
@@ -38,7 +40,7 @@ public class LoginSystem {
     // Save users to CSV
     private void saveUsersToCSV() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
-            bw.write("username,password,role,hrsWorked,scalePoint");
+            bw.write("username,password,userType,roleType,hrsWorked,scalePoint");
             bw.newLine();
             for (User user : users) {
                 bw.write(user.toString());
@@ -55,14 +57,14 @@ public class LoginSystem {
     }  
 
     // Register a new user
-    public void registerUser(String username, String password, String role, double hrsWorked, int scalePoint) {
+    public void registerUser(String username, String password, String userType, String roleType, double hrsWorked, int scalePoint) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 System.out.println("Username already exists.");
                 return;
             }
         }
-        users.add(new User(username, password, role, hrsWorked, scalePoint));
+        users.add(new User(username, password, userType, roleType, hrsWorked, scalePoint));
         saveUsersToCSV();
         System.out.println("User registered successfully.");
     }
@@ -92,7 +94,7 @@ public class LoginSystem {
 
         User user = authenticate(username, password);
         if (user != null) {
-            System.out.println("Login successful. Welcome, " + user.getRole() + " " + user.getUsername());
+            System.out.println("Login successful. Welcome, " + user.getUserType() + " " + user.getUsername());
         } else {
             System.out.println("Invalid username or password.");
         }
