@@ -1,6 +1,7 @@
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+
 public class PayrollSystem {
     private User user;
     private double grossPay;
@@ -64,7 +65,7 @@ public class PayrollSystem {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PAYSLIP_FILE, true))) {
             writer.write(String.format("%s,%s,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f%n",
                     user.getUsername(),
-                    user.getRole(),
+                    user.getUserType(),
                     user.getScalePoint(),
                     this.grossPay,
                     this.healthInsurance,

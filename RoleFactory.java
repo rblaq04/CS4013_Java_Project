@@ -1,16 +1,11 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
+
 class RoleFactory {
     private Map<String, PayScale> fullTimeRoles = new HashMap<>();
-    private Map<String, PayScale> partTimeRoles = new HashMap<>();;
+    private Map<String, PayScale> partTimeRoles = new HashMap<>();
 
-    public RoleFactory(){
+    public RoleFactory() {
     }
 
     public void loadPayScalesFromCSV(String filePath) {

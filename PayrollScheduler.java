@@ -68,7 +68,7 @@ public class PayrollScheduler {
     private void updateSalaryScalesForFullTimeStaff() {
         List<User> employees =  getAllEmployees();
         for (User employee : employees) {
-            if ("F".equals(payrollSystem.getRoleType(employee.getRole()))) {
+            if ("F".equals(payrollSystem.getRoleType(employee.getUserType()))) {
                 int currentScalePoint = employee.getScalePoint();
 
                 if (currentScalePoint < 1) {
@@ -80,9 +80,5 @@ public class PayrollScheduler {
             }
         }
     }
-
-    
-
-    
 }
 
