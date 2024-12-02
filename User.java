@@ -3,21 +3,23 @@ public class User {
     private String username;
     private String password;
     private String userType;
+    private String position;
     private String roleType;
     private double hrsWorked;
     private int scalePoint;
 
     // Constructor
-    public User(String username, String password, String userType, String roleType, double hrsWorked, int scalePoint) {
+    public User(String username, String password, String userType, String position, String roleType, double hrsWorked, int scalePoint) {
         this.username = username;
         this.password = password;
         this.userType = userType;
+        this.position = position;
         this.roleType = roleType;
         this.hrsWorked = hrsWorked;
         this.scalePoint = scalePoint;
     }
 
-    // Getters
+    // Getters and setters
     public String getUsername() {
         return username;
     }
@@ -32,6 +34,14 @@ public class User {
 
     public void setUserType(String userType){
         this.userType = userType;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 
     public String getRoleType() {
@@ -63,6 +73,6 @@ public class User {
     // To String for saving to CSV
     @Override
     public String toString() {
-        return username + "," + password + "," + userType +"," + roleType +","+hrsWorked+","+scalePoint;
+        return username + "," + password + "," + userType +"," + position +"," + roleType +"," + hrsWorked + "," + scalePoint;
     }
 }

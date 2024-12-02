@@ -23,10 +23,10 @@ public class LoginSystem {
                     continue;
                 }
                 String[] parts = line.split(",");
-                double doublePart = Double.parseDouble(parts[4]);
-                int intPart = Integer.parseInt(parts[5]);
-                if (parts.length == 6) {
-                    users.add(new User(parts[0], parts[1], parts[2], parts[3], doublePart, intPart));
+                double doublePart = Double.parseDouble(parts[5]);
+                int intPart = Integer.parseInt(parts[6]);
+                if (parts.length == 7) {
+                    users.add(new User(parts[0], parts[1], parts[2], parts[3], parts[4], doublePart, intPart));
                 } else {
                     System.out.println("Failed to load users from CSV.");
                 }
@@ -57,14 +57,14 @@ public class LoginSystem {
     }  
 
     // Register a new user
-    public void registerUser(String username, String password, String userType, String roleType, double hrsWorked, int scalePoint) {
+    public void registerUser(String username, String password, String userType, String position, String roleType, double hrsWorked, int scalePoint) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 System.out.println("Username already exists.");
                 return;
             }
         }
-        users.add(new User(username, password, userType, roleType, hrsWorked, scalePoint));
+        users.add(new User(username, password, userType, position, roleType, hrsWorked, scalePoint));
         saveUsersToCSV();
         System.out.println("User registered successfully.");
     }
@@ -82,21 +82,5 @@ public class LoginSystem {
             }
         }
         return null; // Invalid credentials
-    }
-
-    // Login
-    public void login() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter username:");
-        String username = scanner.nextLine();
-        System.out.println("Enter password:");
-        String password = scanner.nextLine();
-
-        User user = authenticate(username, password);
-        if (user != null) {
-            System.out.println("Login successful. Welcome, " + user.getUserType() + " " + user.getUsername());
-        } else {
-            System.out.println("Invalid username or password.");
-        }
     }
 }

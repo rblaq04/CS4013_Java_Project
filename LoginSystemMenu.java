@@ -41,7 +41,7 @@ public class LoginSystemMenu {
 
         User loggedInUser = loginSystem.authenticate(username, password);
         if (loggedInUser != null) {
-            System.out.println("Welcome, " + loggedInUser.getUsername() + " (" + loggedInUser.getUserType() + ")");
+            System.out.println("Login successful. Welcome, " + loggedInUser.getUserType() + " " + loggedInUser.getPosition() + " " + loggedInUser.getUsername());
             handleUserActions(scanner, loggedInUser);
         } else {
             System.out.println("Invalid username or password.");
@@ -103,6 +103,8 @@ public class LoginSystemMenu {
                     String password = scanner.nextLine();
                     System.out.println("Enter userType (Employee/HR/Admin):");
                     String userType = scanner.nextLine();
+                    System.out.println("Enter position:");
+                    String position = scanner.nextLine();
                     System.out.println("Enter roleType ((F)ull-time/(P)art-time):");
                     String roleType = scanner.nextLine();
                     System.out.println("Enter hours worked so far (can be 0):");
@@ -111,7 +113,7 @@ public class LoginSystemMenu {
                     System.out.println("Enter scale point:");
                     String stringScalePoint = scanner.nextLine();
                     int scalePoint = Integer.parseInt(stringScalePoint);
-                    loginSystem.registerUser(username, password, userType, roleType, hrsWorked, scalePoint);
+                    loginSystem.registerUser(username, password, userType, position, roleType, hrsWorked, scalePoint);
                     break;
                 case 2:
                     return; // Logout
@@ -164,7 +166,7 @@ public class LoginSystemMenu {
         int newScalePoint = scanner.nextInt();
         scanner.nextLine(); // Consume newline
     
-        System.out.println("Confirm promotion for " + user.getUsername() + " from Scale Point " +
+        System.out.println("Confirm promotion for " + user.getPosition() + " " + user.getUsername() + " from Scale Point " +
                             user.getScalePoint() + " to Scale Point " + newScalePoint + "? (yes/no)");
         String confirmation = scanner.nextLine();
     
