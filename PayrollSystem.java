@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PayrollSystem {
-    private User user;
     private double grossPay;
     private double healthInsurance;
     private double unionFees;
@@ -15,7 +14,7 @@ public class PayrollSystem {
     private double hrsWorked;
 
 
-    private static final String PAYSLIP_FILE = "paySlips.csv";
+    private static final String PAYSLIP_FILE = "payslips.csv";
 
     // Constructor
     public PayrollSystem(RoleFactory roleFactory) {
@@ -157,8 +156,6 @@ public class PayrollSystem {
         return null;
         }
     }
-    
-
 }
 
 

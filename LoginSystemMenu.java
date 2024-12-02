@@ -70,7 +70,7 @@ public class LoginSystemMenu {
     private void handleEmployeeActions(Scanner scanner, User user) {
         while (true) {
             System.out.println("\nEmployee Menu:");
-            System.out.println("1. View Payslip\n2. Logout");
+            System.out.println("1. View Most Recent Payslip\n2. View Historical Payslips");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -80,6 +80,8 @@ public class LoginSystemMenu {
                     payrollSystem.printPayslip(user); // Use PayrollSystem to print payslip
                     break;
                 case 2:
+                    payrollSystem.readPayslipsFromCSV();
+                case 3:
                     return; // Logout
                 default:
                     System.out.println("Invalid choice. Please try again.");

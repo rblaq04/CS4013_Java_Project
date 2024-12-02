@@ -3,15 +3,15 @@ public class TestRole {
         RoleFactory roleFactory = new RoleFactory();
 
         // Load pay scales from CSV
-        roleFactory.loadPayScalesFromCSV("salaryScales.csv");
+        roleFactory.loadPayScalesFromCSV("payScales.csv");
 
         // Add a role interactively
-       
+        roleFactory.addRole();
 
         // Display all roles
         roleFactory.displayRoles();
 
         // Load pay scales to CSV
-        roleFactory.savePayScalesToCSV("salaryScales.csv");
+        roleFactory.savePayScalesToCSV("payScales.csv");
     }
 }

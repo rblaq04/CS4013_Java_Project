@@ -1,8 +1,8 @@
 username,password,userType,position,roleType,hrsWorked,scalePoint
-nikolanikolov,pass123,Employee,placeholder,F,0.0,0
-michaelenglish,PhD31Aug2007,Admin,Associate Professor,F,0.0,0
-harryrichards,hrpass123,HR,placeholder,F,0.0,0
-hollyrobertson,hrpass321,HR,placeholder,F,0.0,0
-gkeeperwilly,secureEmpPass321,Employee,placeholder,F,0.0,2
-alanryan,supersecurepass,Employee,placeholder,P,0.0,0
-hughristics,hrpass1234,HR,placeholder,F,0.0,0
+smartypantsprofessor,pass123,Employee,FULL PROFESSOR,F,40.0,2
+michaelenglish,PhD31Aug2007,Admin,ASSOCIATE PROFESSOR,F,40.0,3
+harryrichards,hrpass123,HR,SENIOR ADMINISTRATOR,F,40.0,1
+hollyrobertson,hrpass321,HR,SERVICE STAFF,F,40.0,3
+gkeeperwilly,secureEmpPass321,Employee,GROUNDSWORKPERSON,F,40.0,2
+sallyanderson,supersecurepass,Employee,SENIOR AIDE,P,20.0,5
+hughristics,hrpass1234,HR,EXECUTIVE ADMINISTRATOR,F,40.0,3
