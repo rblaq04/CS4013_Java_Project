@@ -1,5 +1,5 @@
-username,password,role
-employee1,pass123,Employee
-admin1,adminpass123,Admin
-hr1,hrpass123,HR
-hr2,hrpass321,HR
+username,password,role,hrsWorked,scalePoint
+employee1,pass123,Employee,0.0,0
+admin1,adminpass123,Admin,0.0,0
+hr1,hrpass123,HR,0.0,0
+hr2,hrpass321,HR,0.0,0

@@ -23,8 +23,10 @@ public class LoginSystem {
                     continue;
                 }
                 String[] parts = line.split(",");
-                if (parts.length == 3) {
-                    users.add(new User(parts[0], parts[1], parts[2]));
+                double doublePart = Double.parseDouble(parts[3]);
+                int intPart = Integer.parseInt(parts[4]);
+                if (parts.length == 5) {
+                    users.add(new User(parts[0], parts[1], parts[2], doublePart, intPart));
                 }
             }
         } catch (IOException e) {
@@ -50,16 +52,15 @@ public class LoginSystem {
         saveUsersToCSV(); // Calls the private method to save users
     }  
 
-
     // Register a new user
-    public void registerUser(String username, String password, String role) {
+    public void registerUser(String username, String password, String role, double hrsWorked, int scalePoint) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 System.out.println("Username already exists.");
                 return;
             }
         }
-        users.add(new User(username, password, role));
+        users.add(new User(username, password, role, hrsWorked, scalePoint));
         saveUsersToCSV();
         System.out.println("User registered successfully.");
     }
@@ -67,6 +68,7 @@ public class LoginSystem {
     public List<User> getUsers() {
         return users; // Return the list of users
     }
+
 
     // Authenticate a user
     public User authenticate(String username, String password) {

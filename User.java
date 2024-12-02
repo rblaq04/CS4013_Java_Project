@@ -7,10 +7,12 @@ public class User {
     private int scalePoint;
 
     // Constructor
-    public User(String username, String password, String role) {
+    public User(String username, String password, String role, double hrsWorked, int scalePoint) {
         this.username = username;
         this.password = password;
         this.role = role;
+        this.hrsWorked = hrsWorked;
+        this.scalePoint = scalePoint;
     }
 
     // Getters

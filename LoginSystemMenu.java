@@ -97,13 +97,19 @@ public class LoginSystemMenu {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter username: ");
+                    System.out.println("Enter username:");
                     String username = scanner.nextLine();
-                    System.out.print("Enter password: ");
+                    System.out.println("Enter password:");
                     String password = scanner.nextLine();
-                    System.out.print("Enter role (Employee/HR/Admin): ");
+                    System.out.println("Enter role (Employee/HR/Admin):");
                     String role = scanner.nextLine();
-                    loginSystem.registerUser(username, password, role);
+                    System.out.println("Enter hours worked so far (can be 0):");
+                    String stringHrsWorked = scanner.nextLine();
+                    double hrsWorked = Double.parseDouble(stringHrsWorked);
+                    System.out.println("Enter scale point:");
+                    String stringScalePoint = scanner.nextLine();
+                    int scalePoint = Integer.parseInt(stringScalePoint);
+                    loginSystem.registerUser(username, password, role, hrsWorked, scalePoint);
                     break;
                 case 2:
                     return; // Logout
