@@ -11,8 +11,6 @@ class RoleFactory {
     private Map<String, PayScale> partTimeRoles = new HashMap<>();;
 
     public RoleFactory(){
-      
-
     }
 
     public void loadPayScalesFromCSV(String filePath) {
