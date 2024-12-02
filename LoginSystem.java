@@ -38,6 +38,8 @@ public class LoginSystem {
     // Save users to CSV
     private void saveUsersToCSV() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
+            bw.write("username,password,role,hrsWorked,scalePoint");
+            bw.newLine();
             for (User user : users) {
                 bw.write(user.toString());
                 bw.newLine();

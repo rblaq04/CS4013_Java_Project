@@ -53,6 +53,6 @@ public class User {
     // To String for saving to CSV
     @Override
     public String toString() {
-        return username + "," + password + "," + role +","+scalePoint+","+hrsWorked;
+        return username + "," + password + "," + role +","+hrsWorked+","+scalePoint;
     }
 }

@@ -14,24 +14,18 @@ public class TestLogin {
         // Create the LoginSystemMenu instance
         LoginSystemMenu loginSystemMenu = new LoginSystemMenu(loginSystem, payrollSystem);
 
-        List<User> users = new List<User> LoginSystem.getUsers();
-
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("\n1. Register User\n2. Start Login System\n3. Exit");
+            System.out.println("1. Start Login System\n2. Exit");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
 
             switch (choice) {
                 case 1:
-                    // Register User functionality
-                    LoginSystem.registerUser()
-                    break;
-                case 2:
                     // Start LoginSystemMenu (This will start the login process and show menus)
                     loginSystemMenu.start();
                     break;
-                case 3:
+                case 2:
                     System.out.println("Exiting...");
                     return;
                 default:
