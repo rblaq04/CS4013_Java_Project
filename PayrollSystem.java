@@ -61,6 +61,7 @@ public class PayrollSystem {
 
     // Method to save payslip to CSV
     public void savePayslipToCSV(User user) {
+        calculateNetPay(user);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PAYSLIP_FILE, true))) {
             writer.write(String.format("%s,%s,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f%n",
                     user.getUsername(),
