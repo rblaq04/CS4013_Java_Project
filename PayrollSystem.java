@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 public class PayrollSystem {
     private User user;
     private double grossPay;
@@ -9,6 +12,9 @@ public class PayrollSystem {
     private double netPay;
     private RoleFactory roleFactory;
     private double hrsWorked;
+
+
+    private static final String PAYSLIP_FILE = "payslips.csv";
 
     // Constructor
     public PayrollSystem(RoleFactory roleFactory) {
@@ -50,6 +56,40 @@ public class PayrollSystem {
         System.out.printf("PRSI: €%.2f%n", this.prsi);
         System.out.printf("USC: €%.2f%n", this.usc);
         System.out.printf("Net Pay: €%.2f%n", this.netPay);
+        savePayslipToCSV(user);
+    }
+
+    // Method to save payslip to CSV
+    private void savePayslipToCSV(User user) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(PAYSLIP_FILE, true))) {
+            writer.write(String.format("%s,%s,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f%n",
+                    user.getUsername(),
+                    user.getRole(),
+                    user.getScalePoint(),
+                    this.grossPay,
+                    this.healthInsurance,
+                    this.unionFees,
+                    this.incomeTax,
+                    this.prsi,
+                    this.usc,
+                    this.netPay));
+        } catch (IOException e) {
+            System.err.println("Error writing to CSV file: " + e.getMessage());
+        }
+    }
+
+    // Method to read payslips from CSV
+    public List<String> readPayslipsFromCSV() {
+        List<String> payslips = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(PAYSLIP_FILE))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                payslips.add(line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading from CSV file: " + e.getMessage());
+        }
+        return payslips;
     }
 
 
