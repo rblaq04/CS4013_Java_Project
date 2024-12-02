@@ -8,6 +8,7 @@ class RoleFactory {
     public RoleFactory() {
     }
 
+    // Method to load pay scales from CSV file
     public void loadPayScalesFromCSV(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -21,7 +22,9 @@ class RoleFactory {
                     int scalePoint = scalePointStr.isEmpty() ? 0 : Integer.parseInt(scalePointStr);
                     double annualRate = Double.parseDouble(annualRateStr);
 
-                    if (description.toUpperCase().contains("PART-TIME-")) {
+                    // Remove the "PART-TIME-" prefix if present
+                    if (description.toUpperCase().startsWith("PART-TIME-")) {
+                        description = description.substring("PART-TIME-".length());
                         partTimeRoles.computeIfAbsent(description, PayScale::new).addScalePoint(scalePoint, annualRate);
                     } else {
                         fullTimeRoles.computeIfAbsent(description, PayScale::new).addScalePoint(scalePoint, annualRate);
@@ -33,12 +36,13 @@ class RoleFactory {
         }
     }
 
+    // Method to save pay scales to CSV file
     public void savePayScalesToCSV(String filePath) {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
             // Writing full-time roles to the CSV file
             writePayScalesToCSV(bw, fullTimeRoles, false);
 
-            // Writing part-time roles to the CSV file with a marker "PART-TIME-"
+            // Writing part-time roles to the CSV file with the "PART-TIME-" prefix
             writePayScalesToCSV(bw, partTimeRoles, true);
 
             System.out.println("Pay scales successfully saved to CSV.");
@@ -47,6 +51,7 @@ class RoleFactory {
         }
     }
 
+    // Helper method to write pay scales to the CSV
     private void writePayScalesToCSV(BufferedWriter bw, Map<String, PayScale> rolesMap, boolean isPartTime) throws IOException {
         for (String description : rolesMap.keySet()) {
             PayScale payScale = rolesMap.get(description);
@@ -54,9 +59,9 @@ class RoleFactory {
                 int scalePoint = entry.getKey();
                 double annualRate = entry.getValue();
                 
-                // If the role is part-time, add a "PART-TIME-" prefix
+                // If the role is part-time, add the "PART-TIME-" prefix
                 String roleDescription = description;
-                if (isPartTime && !description.startsWith("PART-TIME-")) {
+                if (isPartTime && !roleDescription.startsWith("PART-TIME-")) {
                     roleDescription = "PART-TIME-" + description;
                 }
                 bw.write(roleDescription + "," + scalePoint + "," + annualRate);
@@ -65,8 +70,8 @@ class RoleFactory {
         }
     }
 
+    // Method to add a new role (full-time or part-time)
     public void addRole() {
-        
         Scanner in = new Scanner(System.in);
         System.out.println("Add F)ull-time role or P)art-time role?");
         String command = in.nextLine().toUpperCase();
@@ -75,8 +80,6 @@ class RoleFactory {
             System.out.println("Enter Role Name:");
             String description = in.nextLine();
             PayScale payScale = new PayScale(description);
-            
-            
 
             int scale = 1;
             while (true) {
@@ -87,7 +90,7 @@ class RoleFactory {
                     break;
                 } else if (choice.equals("A")) {
                     if (command.equals("F")) {
-                    System.out.println("Enter annual rate for Scale Point " + scale + ":");
+                        System.out.println("Enter annual rate for Scale Point " + scale + ":");
                     } else if (command.equals("P")) {
                         System.out.println("Enter hourly rate for Scale Point " + scale + ":");
                     }
@@ -113,6 +116,7 @@ class RoleFactory {
         }
     }
 
+    // Method to remove a role (full-time or part-time)
     public void removeRole() {
         Scanner in = new Scanner(System.in);
         System.out.println("Remove F)ull-time role or P)art-time role?");
@@ -141,7 +145,8 @@ class RoleFactory {
             System.out.println("Invalid choice. Please choose F or P.");
         }
     }
-    
+
+    // Method to get the pay scale for a given role name
     public PayScale getPayScale(String name) {
         if (fullTimeRoles.containsKey(name)) {
             return fullTimeRoles.get(name);
@@ -152,6 +157,7 @@ class RoleFactory {
         }
     }
 
+    // Method to get the role type (F for full-time, P for part-time)
     public String getRoleType(String name) {
         if (fullTimeRoles.containsKey(name)) {
             return "F";
@@ -162,17 +168,16 @@ class RoleFactory {
         }
     }
 
+    // Method to display all roles
     public void displayRoles() {
         System.out.println("Full-Time Roles:");
-        for(String description : fullTimeRoles.keySet()){
+        for (String description : fullTimeRoles.keySet()) {
             System.out.println(fullTimeRoles.get(description).toString());
-            }
-        
+        }
 
         System.out.println("Part-Time Roles:");
-        for(String description : partTimeRoles.keySet()){
+        for (String description : partTimeRoles.keySet()) {
             System.out.println(partTimeRoles.get(description).toString());
-            }
-    
+        }
     }
 }
