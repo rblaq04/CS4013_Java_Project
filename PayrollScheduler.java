@@ -34,6 +34,11 @@ public class PayrollScheduler {
             System.out.println("Generating payslips for all employees...");
             generatePayslips();
         }
+
+        if (today.getMonth() == Month.OCTOBER) {
+            System.out.println("October: Updating salary scales for full-time staff...");
+            updateSalaryScalesForFullTimeStaff();
+        }
     }
 
     private boolean isSecondFriday(LocalDate date) {
@@ -60,9 +65,20 @@ public class PayrollScheduler {
        return loginSystem.getUsers();
     }
 
-    public void stop() {
-        scheduler.shutdown();
-        System.out.println("Scheduler stopped.");
+    private void updateSalaryScalesForFullTimeStaff() {
+        List<User> employees =  getAllEmployees();
+        for (User employee : employees) {
+            if ("F".equals(payrollSystem.getRoleType(employee.getRole()))) {
+                int currentScalePoint = employee.getScalePoint();
+
+                if (currentScalePoint < 1) {
+                    employee.setScalePoint(currentScalePoint + 1);
+                    System.out.printf("Salary scale updated for: %s (New Scale Point: %d)%n", employee.getUsername(), currentScalePoint + 1);
+                } else {
+                    System.out.printf("Salary scale unchanged for: %s (Already at top scale point)%n", employee.getUsername());
+                }
+            }
+        }
     }
 
     
