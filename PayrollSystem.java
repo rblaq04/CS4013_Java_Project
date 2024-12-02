@@ -14,7 +14,7 @@ public class PayrollSystem {
     private double hrsWorked;
 
 
-    private static final String PAYSLIP_FILE = "payslips.csv";
+    private static final String PAYSLIP_FILE = "paySlips.csv";
 
     // Constructor
     public PayrollSystem(RoleFactory roleFactory) {
@@ -60,7 +60,7 @@ public class PayrollSystem {
     }
 
     // Method to save payslip to CSV
-    private void savePayslipToCSV(User user) {
+    public void savePayslipToCSV(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PAYSLIP_FILE, true))) {
             writer.write(String.format("%s,%s,%d,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f%n",
                     user.getUsername(),
@@ -145,7 +145,17 @@ public class PayrollSystem {
         }
     }
 
-    
+    public String getRoleType(String role){
+        if ("F".equals(roleFactory.getRoleType(role))){
+            return "F";
+
+        }else if ("P".equals(roleFactory.getRoleType(role))){
+        return "P";
+
+        } else {
+        return null;
+        }
+    }
     
 
 }
