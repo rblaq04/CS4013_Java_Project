@@ -55,21 +55,7 @@ public class PayrollScheduler {
         return date.equals(secondFriday);
     }
 
-    private void validatePartTimeClaims() {
-        LocalDate today = LocalDate.now();
     
-        // Only check claims after the 15th of the month
-        if (today.getDayOfMonth() >= 15) {
-            List<User> employees = getAllEmployees();
-            for (User employee : employees) {
-                if ("P".equals(payrollSystem.getRoleType(employee.getUserType()))) {
-                    if (!employee.getCurrentClaim()) {
-                        System.out.printf("Reminder: Part-time employee %s has not submitted a claim.%n", employee.getUsername());
-                    }
-                }
-            }
-        }
-    }
     
 
     private void generatePayslips() {
