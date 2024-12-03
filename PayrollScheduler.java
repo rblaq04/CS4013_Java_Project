@@ -84,8 +84,9 @@ public class PayrollScheduler {
                     claimDate.getMonth() == today.getMonth() &&
                     claimDate.getYear() == today.getYear()) {
                     payrollSystem.savePayslipToCSV(employee);
-                    System.out.printf("Payslip generated for part-time employee: %s%n", employee.getUsername());
-                } 
+                   
+                    } 
+                } else {
                 // Generate payslip for non-part-time employees
                 payrollSystem.savePayslipToCSV(employee);
                 
