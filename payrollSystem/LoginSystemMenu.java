@@ -37,7 +37,6 @@ public class LoginSystemMenu {
                     break;
                 case 2:
                     System.out.println("Exiting...");
-                    scanner.close();
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
