@@ -52,8 +52,13 @@ public class LoginSystemMenu {
         // Handle the actions for different userTypes
         switch (user.getUserType()) {
             case "Employee":
+                if (user.getRoleType().equals("F")) {
                 handleEmployeeActions(scanner, user); // Employee can access Employee options
                 break;
+                }
+                else {
+                    handlePartTimeEmployeeActions(scanner, user);
+                }
             case "HR":
                 handleEmployeeActions(scanner, user); // HR can also access Employee options
                 handleHRActions(scanner); // HR actions
@@ -89,6 +94,34 @@ public class LoginSystemMenu {
         }
     }
 
+    private void handlePartTimeEmployeeActions(Scanner scanner, User user) {
+        while (true) {
+            System.out.println("\nEmployee Menu:");
+            System.out.println("1. View Most Recent Payslip\n2. View Historical Payslips\n3. Submit a Pay Claim Form\n4. Logout");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // Consume newline
+
+            switch (choice) {
+                case 1:
+                    payrollSystem.printPayslip(user); // Use PayrollSystem to print payslip
+                    break;
+                case 2:
+                    payrollSystem.readPayslipsFromCSV(user);
+                case 3:
+                    System.out.println("Enter hours worked for current month: ");
+                    String payClaimForm = scanner.nextLine();
+                    double hrsWorked = Double.parseDouble(payClaimForm);
+                    user.addHrsWorked(hrsWorked);
+                    user.setCurrentClaim(true);
+                case 4:
+                return; // Logout
+                default:
+                    System.out.println("Invalid choice. Please try again.");
+            }
+        }
+    }
+
     private void handleAdminActions(Scanner scanner) {
         while (true) {
             System.out.println("\nAdmin Menu:");
@@ -105,6 +138,13 @@ public class LoginSystemMenu {
                     String password = scanner.nextLine();
                     System.out.println("Enter userType (Employee/HR/Admin):");
                     String userType = scanner.nextLine();
+                    if (userType.toUpperCase() == "EMPLOYEE") {
+                        userType = "Employee";
+                    } else if (userType.toUpperCase() == "ADMIN") {
+                        userType = "Admin";
+                    } else if (userType.toUpperCase() == "EMPLOYEE") {
+                        userType = "Employee";
+                    } else {userType = "Employee";}
                     System.out.println("Enter position:");
                     String position = scanner.nextLine();
                     System.out.println("Enter roleType ((F)ull-time/(P)art-time):");

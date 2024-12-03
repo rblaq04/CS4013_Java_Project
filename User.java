@@ -7,6 +7,7 @@ public class User {
     private String roleType;
     private double hrsWorked;
     private int scalePoint;
+    private boolean currentClaim;
 
     // Constructor
     public User(String username, String password, String userType, String position, String roleType, double hrsWorked, int scalePoint) {
@@ -17,6 +18,7 @@ public class User {
         this.roleType = roleType;
         this.hrsWorked = hrsWorked;
         this.scalePoint = scalePoint;
+        this.currentClaim = false;
     }
 
     // Getters and setters
@@ -32,7 +34,7 @@ public class User {
         return userType;
     }
 
-    public void setUserType(String userType){
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 
@@ -52,27 +54,33 @@ public class User {
         this.roleType = roleType;
     }
 
-    public double getHrsWorked(){
+    public double getHrsWorked() {
         return  hrsWorked;
     }
 
-    public void addHrsWorked(int hrs){
+    public void addHrsWorked(double hrs) {
         hrsWorked =+ hrs;
     }
 
-    public void setScalePoint(int scalePoint){
+    public void setScalePoint(int scalePoint) {
         this.scalePoint = scalePoint;
     }
 
-    public int getScalePoint(){
+    public int getScalePoint() {
         return scalePoint;
     }
 
-    
+    public boolean getCurrentClaim() {
+        return currentClaim;
+    }
+
+    public void setCurrentClaim(boolean currentClaim) {
+        this.currentClaim = currentClaim;
+    }
 
     // To String for saving to CSV
     @Override
     public String toString() {
-        return username + "," + password + "," + userType +"," + position +"," + roleType +"," + hrsWorked + "," + scalePoint;
+        return username + "," + password + "," + userType +"," + position +"," + roleType +"," + hrsWorked + "," + scalePoint + "," + currentClaim;
     }
 }

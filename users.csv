@@ -1,8 +1,8 @@
-username,password,userType,position,roleType,hrsWorked,scalePoint
-smartypantsprofessor,pass123,Employee,FULL PROFESSOR (FORMERLY PROFESSOR),F,40.0,2
-michaelenglish,javaIsV3ryC00l,Admin,ASSOCIATE PROFESSOR,F,40.0,3
-harryrichards,hrpass123,HR,SENIOR ADMINISTRATOR,F,40.0,1
-hollyrobertson,hrpass321,HR,SERVICE STAFF,F,40.0,3
-gkeeperwilly,secureEmpPass321,Employee,GROUNDSWORKPERSON,F,40.0,2
-sallyanderson,supersecurepass,Employee,SENIOR AIDE,P,20.0,5
-hughristics,hrpass1234,HR,EXECUTIVE ADMINISTRATOR,F,40.0,3
+username,password,userType,position,roleType,hrsWorked,scalePoint,currentClaim
+smartypantsprofessor,pass123,Employee,FULL PROFESSOR,F,40.0,2,false
+michaelenglish,javaIsV3ryC00l,Admin,ASSOCIATE PROFESSOR A,F,40.0,3,false
+harryrichards,hrpass123,HR,SENIOR ADMINISTRATOR,F,40.0,1,false
+hollyrobertson,hrpass321,HR,SERVICE STAFF,F,40.0,3,false
+gkeeperwilly,secureEmpPass321,Employee,GROUNDSWORKPERSON,F,40.0,2,false
+sallyanderson,supersecurepass,Employee,SENIOR AIDE,P,20.0,5,false
+hughristics,hrpass1234,HR,EXECUTIVE ADMINISTRATOR,F,40.0,3,falsex

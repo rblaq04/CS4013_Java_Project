@@ -25,7 +25,7 @@ public class LoginSystem {
                 String[] parts = line.split(",");
                 double doublePart = Double.parseDouble(parts[5]);
                 int intPart = Integer.parseInt(parts[6]);
-                if (parts.length == 7) {
+                if (parts.length == 8) {
                     users.add(new User(parts[0], parts[1], parts[2], parts[3], parts[4], doublePart, intPart));
                 } else {
                     System.out.println("Failed to load users from CSV.");
