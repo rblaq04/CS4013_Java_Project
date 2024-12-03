@@ -80,17 +80,35 @@ public class PayrollSystem {
     }
 
     // Method to read payslips from CSV
-    public List<String> readPayslipsFromCSV() {
-        List<String> payslips = new ArrayList<>();
+    public void readPayslipsFromCSV(User user) {
         try (BufferedReader reader = new BufferedReader(new FileReader(PAYSLIP_FILE))) {
             String line;
+            int payslipNum = 1;
+            boolean isFirstLine = true; // Flag to skip the header
             while ((line = reader.readLine()) != null) {
-                payslips.add(line);
+                if (isFirstLine) {
+                    isFirstLine = false; // Skip the first line
+                    continue;
+                }
+                String[] parts = line.split(",");
+                String payslipUser = parts[0];
+                String currentUser = user.getUsername();
+                if (payslipUser.equals(currentUser)) {
+                    System.out.println("Payslip " + payslipNum);
+                    System.out.println("Gross Pay: € "+ parts[3]);
+                    System.out.println("Health Insurance: € "+ parts[4]);
+                    System.out.println("Union Fees: € "+ parts[5]);
+                    System.out.println("Income Tax: € "+ parts[6]);
+                    System.out.println("PRSI: € "+ parts[7]);
+                    System.out.println("USC: € "+ parts[8]);
+                    System.out.println("Net Pay: € "+ parts[9] + "\n");
+                    payslipNum += 1;
+                }
             }
+
         } catch (IOException e) {
             System.err.println("Error reading from CSV file: " + e.getMessage());
         }
-        return payslips;
     }
 
 
