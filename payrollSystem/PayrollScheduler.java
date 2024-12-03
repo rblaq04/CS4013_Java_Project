@@ -1,8 +1,17 @@
+package payrollSystem;
 import java.time.*;
 import java.time.temporal.TemporalAdjusters;
 import java.util.*;
 import java.util.concurrent.*;
 
+/**
+ * A Payroll Scheduler Object <br>
+ * 
+ * A <code>PayrollScheduler</code> object contains the parameters and functionality of
+ * the payroll scheduler (which schedules payroll tasks) used in a payroll system at the University of Limerick
+ * 
+ * @author Benjamin Curran
+ */
 public class PayrollScheduler {
     private final PayrollSystem payrollSystem;
     private final ScheduledExecutorService scheduler;

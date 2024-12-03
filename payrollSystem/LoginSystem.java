@@ -1,11 +1,25 @@
+package payrollSystem;
 import java.io.*;
 import java.util.*;
+/**
+ * A Login System Object <br>
+ * 
+ * A <code>LoginSystem</code> object contains the parameters and functionality of
+ * the backend of a login system used in a payroll system.
+ * 
+ * @author Rayan Blaq, Dónal Reynolds
+ */
 
 public class LoginSystem {
     private List<User> users;
     private final String filePath;
 
     // Constructor
+    /**
+     * LoginSystem constructor
+     * 
+     * @param filePath - the filepath for the users.csv file
+     */
     public LoginSystem(String filePath) {
         this.filePath = filePath;
         this.users = new ArrayList<>();
@@ -13,6 +27,9 @@ public class LoginSystem {
     }
  
     // Load users from CSV
+    /**
+     * Private method to load users into the users list from a CSV file
+     */
     private void loadUsersFromCSV() {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -38,6 +55,9 @@ public class LoginSystem {
 
 
     // Save users to CSV
+    /**
+     * Private method to save users currently in the users list to a CSV file 
+     */
     private void saveUsersToCSV() {
         try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath))) {
             bw.write("username,password,userType,position,roleType,hrsWorked,scalePoint,currentClaim");
@@ -52,11 +72,25 @@ public class LoginSystem {
     }
 
     // Public method to save users to be used from the LoginSystemMenu class
+    /**
+     * Public method to save users
+     */
     public void saveUsers() {
         saveUsersToCSV(); // Calls the private method to save users
     }  
 
-    // Register a new user
+    
+    /** 
+     * Register a new user
+     * 
+     * @param username - the user's username
+     * @param password - the user's password
+     * @param userType - the user's access level (Employee, HR or Admin)
+     * @param position - the user's position at the university (i.e. Associate Professor)
+     * @param roleType - user is part-time (P) or full-time (F)
+     * @param hrsWorked - the number of hours worked by the user
+     * @param scalePoint - the point a user is at on their salary scale
+     */
     public void registerUser(String username, String password, String userType, String position, String roleType, double hrsWorked, int scalePoint) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
@@ -69,12 +103,21 @@ public class LoginSystem {
         System.out.println("User registered successfully.");
     }
 
+    /**
+     * Get list of users
+     * @return the list of current users
+     */
     public List<User> getUsers() {
         return users; // Return the list of users
     }
 
 
-    // Authenticate a user
+    /**
+     * Authenticate a user when logging in
+     * @param username - the user's username
+     * @param password - the user's password
+     * @return the user that has been authenticated or null if credentials were invalid
+     */
     public User authenticate(String username, String password) {
         for (User user : users) {
             if (user.getUsername().equals(username) && user.getPassword().equals(password)) {

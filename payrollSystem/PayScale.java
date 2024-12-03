@@ -1,7 +1,15 @@
-
+package payrollSystem;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * A Pay Scale Object <br>
+ * 
+ * A <code>PayScale</code> object contains the parameters and functionality of
+ * an employee pay scale at the University of Limerick
+ * 
+ * @author Benjamin Curran
+ */
 class PayScale {
     private Map<Integer, Double> scalePoints; 
     private String description;

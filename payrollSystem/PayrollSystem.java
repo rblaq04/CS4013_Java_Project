@@ -1,8 +1,15 @@
+package payrollSystem;
 import java.io.*;
 import java.time.*;
-import java.util.ArrayList;
-import java.util.List;
 
+/**
+ * A Payroll System Object <br>
+ * 
+ * A <code>PayrollSystem</code> object contains the parameters and functionality of
+ * the payroll system used at the University of Limerick
+ * 
+ * @author Benjamin Curran, Rayan Blaq, Dónal Reynolds
+ */
 public class PayrollSystem {
     private double grossPay;
     private double healthInsurance;
@@ -180,5 +187,6 @@ public class PayrollSystem {
         }
     }
 }
+
 
 

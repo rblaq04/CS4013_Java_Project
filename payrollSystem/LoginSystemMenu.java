@@ -1,5 +1,14 @@
+package payrollSystem;
 import java.util.*;
 
+/**
+ * A Login System Menu Object <br>
+ * 
+ * A <code>LoginSystemMenu</code> object contains the parameters and functionality of
+ * the CLI frontend of a login system used in a payroll system
+ * 
+ * @author Dónal Reynolds
+ */
 public class LoginSystemMenu {
     private final LoginSystem loginSystem;
     private final PayrollSystem payrollSystem;
@@ -32,7 +41,7 @@ public class LoginSystemMenu {
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
-            }   
+            }
         }
     }
 
@@ -79,7 +88,7 @@ public class LoginSystemMenu {
     private void handleEmployeeActions(Scanner scanner, User user) {
         while (true) {
             System.out.println("\nEmployee Menu:");
-            System.out.println("1. View Most Recent Payslip\n2. View Historical Payslips\n3. Logout");
+            System.out.println("1. View Most Recent Payslip\n2. View Historical Payslips");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline

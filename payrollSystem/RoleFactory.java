@@ -1,6 +1,15 @@
+package payrollSystem;
 import java.io.*;
 import java.util.*;
 
+/**
+ * A Role Factory Object <br>
+ * 
+ * A <code>RoleFactory</code> object contains the parameters and functionality of
+ * the different employee positions at the University of Limerick
+ * 
+ * @author Benjamin Curran
+ */
 class RoleFactory {
     private final Map<String, PayScale> fullTimeRoles = new HashMap<>();
     private Map<String, PayScale> partTimeRoles = new HashMap<>();

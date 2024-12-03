@@ -1,4 +1,14 @@
+package payrollSystem;
 import java.util.*;
+
+/**
+ * A Main Menu Object <br>
+ * 
+ * A <code>MainMenu</code> object contains the parameters and functionality of
+ * the main menu used in a payroll system at the University of Limerick
+ * 
+ * @author Rayan Blaq, Dónal Reynolds, Benjamin Curran
+ */
 
 public class MainMenu {
     public static void main(String[] args) {
