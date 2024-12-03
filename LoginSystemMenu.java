@@ -117,6 +117,7 @@ public class LoginSystemMenu {
                     double hrsWorked = Double.parseDouble(payClaimForm);
                     user.addHrsWorked(hrsWorked);
                     user.setCurrentClaim(true);
+                    payrollScheduler.submitClaim(user);
                     break;
                 case 4:
                 return; // Logout
