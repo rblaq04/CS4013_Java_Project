@@ -118,7 +118,7 @@ public class LoginSystemMenu {
                     System.out.println("Enter hours worked for current month: ");
                     String payClaimForm = scanner.nextLine();
                     double hrsWorked = Double.parseDouble(payClaimForm);
-                    user.addHrsWorked(hrsWorked);
+                    user.setHrsWorked(hrsWorked);
                     user.setCurrentClaim(true);
                     payrollScheduler.submitClaim(user);
                     break;

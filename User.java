@@ -58,6 +58,10 @@ public class User {
         return  hrsWorked;
     }
 
+    public void setHrsWorked(double hrsWorked) {
+        this.hrsWorked = hrsWorked;
+    }
+
     public void addHrsWorked(double hrs) {
         hrsWorked =+ hrs;
     }
