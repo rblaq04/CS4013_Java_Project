@@ -1,8 +1,9 @@
 # Directions for use:
-First, run the ```public static void main(String[] args)``` method from the MainMenu class.
+First, run the ```public static void main(String[] args)``` method from the MainMenu class, which is part of the payrollSystem package.
 
 ### Logging In
-To login, your username and password must be included in users.csv.
+Follow on-screen instructions to login using the CLI.
+Your username and password must already be included in users.csv in order to log in.
 
 ### Adding New Users
 To add a new user's information to users.csv, an admin can login and select option 2 (Logout)
