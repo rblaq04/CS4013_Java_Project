@@ -40,13 +40,14 @@ public class PayrollScheduler {
         }
     }
 
-    private boolean isSecondFriday(LocalDate date) {
-
+    private boolean isBeforeSecondFriday(LocalDate date) {
         LocalDate firstDay = date.withDayOfMonth(1);
         LocalDate firstFriday = firstDay.with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY));
+
         LocalDate secondFriday = firstFriday.plusWeeks(1);
 
-        return date.equals(secondFriday);
+    
+        return !date.isAfter(secondFriday);
     }
 
     
@@ -62,7 +63,8 @@ public class PayrollScheduler {
                 LocalDate claimDate = claimSubmissionDates.get(employee.getUsername());
                 if (employee.getCurrentClaim() && claimDate != null &&
                     claimDate.getMonth() == today.getMonth() &&
-                    claimDate.getYear() == today.getYear()) {
+                    claimDate.getYear() == today.getYear() &&
+                    isBeforeSecondFriday(claimDate)) {
                     payrollSystem.savePayslipToCSV(employee);
                    
                     } 
