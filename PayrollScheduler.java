@@ -28,12 +28,6 @@ public class PayrollScheduler {
             
         resetPartTimeClaims();
 
-        // Check if today is the second Friday of the month
-        if (isSecondFriday(today)) {
-            validatePartTimeClaims();
-       
-        }
-
         // Check if today is the 25th of the month
         if (today.getDayOfMonth() == 25) {
             System.out.println("Generating payslips for all employees...");
