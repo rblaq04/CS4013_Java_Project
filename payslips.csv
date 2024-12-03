@@ -1,2 +1,8 @@
-
-smartypantsprofessor,Employee,2,0.00,0.00,10.00,0.00,0.00,0.00,-10.00
+username,userType,scalePoint,grossPay,healthInsurance,unionFees,incomeTax,PRSI,USC,netPay
+smartypantsprofessor,Employee,2,148055,1000,1184.44,49022,6070.255,11844.4,78933.905
+michaelenglish,Admin,3,51676,1000,413.408,10470.4,2118.716,2325.42,33552.871
+harryrichards,HR,1,39893,1000,319.144,7978.6,1635.613,1795.185,27164.458
+hollyrobertson,HR,3,39461,1000,315.688,7892.2,1617.901,1775.745,26859.466
+gkeeperwilly,Employee,2,35795,1000,286.36,7159,1467.595,1610.775,24271.27
+sallyanderson,Employee,5,41420,1000,331.36,8284,1698.22,1863.9,28242.52
+hughristics,HR,3,49360,1000,394.88,9872,2023.76,2221.2,33848.16
