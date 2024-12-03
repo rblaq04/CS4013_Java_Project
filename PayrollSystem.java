@@ -56,7 +56,7 @@ public class PayrollSystem {
         System.out.printf("PRSI: €%.2f%n", this.prsi);
         System.out.printf("USC: €%.2f%n", this.usc);
         System.out.printf("Net Pay: €%.2f%n", this.netPay);
-        savePayslipToCSV(user);
+        
     }
 
     // Method to save payslip to CSV
