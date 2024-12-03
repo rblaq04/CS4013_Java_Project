@@ -3,11 +3,14 @@ import java.util.*;
 public class LoginSystemMenu {
     private final LoginSystem loginSystem;
     private final PayrollSystem payrollSystem;
+    private final PayrollScheduler payrollScheduler;
 
     // Constructor
     public LoginSystemMenu(LoginSystem loginSystem, PayrollSystem payrollSystem) {
         this.loginSystem = loginSystem;
         this.payrollSystem = payrollSystem;
+        this.payrollScheduler = new PayrollScheduler(payrollSystem, loginSystem);
+        payrollScheduler.start();
     }
 
     // Start the CLI
@@ -117,6 +120,7 @@ public class LoginSystemMenu {
                     double hrsWorked = Double.parseDouble(payClaimForm);
                     user.addHrsWorked(hrsWorked);
                     user.setCurrentClaim(true);
+                    payrollScheduler.submitClaim(user);
                     break;
                 case 4:
                 return; // Logout
