@@ -85,13 +85,10 @@ public class PayrollScheduler {
                     claimDate.getYear() == today.getYear()) {
                     payrollSystem.savePayslipToCSV(employee);
                     System.out.printf("Payslip generated for part-time employee: %s%n", employee.getUsername());
-                } else {
-                    System.out.printf("No payslip generated for %s. Claim not submitted or invalid.%n", employee.getUsername());
-                }
-            } else {
+                } 
                 // Generate payslip for non-part-time employees
                 payrollSystem.savePayslipToCSV(employee);
-                System.out.printf("Payslip generated for full-time/admin employee: %s%n", employee.getUsername());
+                
             }
         }
     }
