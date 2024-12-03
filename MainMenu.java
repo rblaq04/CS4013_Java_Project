@@ -7,6 +7,7 @@ public class MainMenu {
         
         // Create RoleFactory instance
         RoleFactory roleFactory = new RoleFactory();
+        roleFactory.loadPayScalesFromCSV("payScales.csv");
         
         // Create PayrollSystem instance using the RoleFactory
         PayrollSystem payrollSystem = new PayrollSystem(roleFactory);

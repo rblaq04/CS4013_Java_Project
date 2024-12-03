@@ -1,5 +1,5 @@
 username,password,userType,position,roleType,hrsWorked,scalePoint
-smartypantsprofessor,pass123,Employee,FULL PROFESSOR,F,40.0,2
+smartypantsprofessor,pass123,Employee,FULL PROFESSOR (FORMERLY PROFESSOR),F,40.0,2
 michaelenglish,javaIsV3ryC00l,Admin,ASSOCIATE PROFESSOR,F,40.0,3
 harryrichards,hrpass123,HR,SENIOR ADMINISTRATOR,F,40.0,1
 hollyrobertson,hrpass321,HR,SERVICE STAFF,F,40.0,3

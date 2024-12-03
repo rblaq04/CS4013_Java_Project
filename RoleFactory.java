@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*;
 
 class RoleFactory {
-    private Map<String, PayScale> fullTimeRoles = new HashMap<>();
+    private final Map<String, PayScale> fullTimeRoles = new HashMap<>();
     private Map<String, PayScale> partTimeRoles = new HashMap<>();
 
     public RoleFactory() {
