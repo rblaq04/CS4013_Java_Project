@@ -19,6 +19,11 @@ public class PayrollScheduler {
     private final Map<String, LocalDate> claimSubmissionDates = new HashMap<>();
 
 
+    /**
+     * PayrollScheduler constructor
+     * @param payrollSystem - the PayrollSystem class
+     * @param loginSystem - the LoginSystem class
+     */
     public PayrollScheduler(PayrollSystem payrollSystem, LoginSystem loginSystem) {
         this.payrollSystem = payrollSystem;
         this.loginSystem = loginSystem;
@@ -26,12 +31,18 @@ public class PayrollScheduler {
         
     }
 
+    /**
+     * Method to start scheduler
+     */
     public void start() {
         // Schedule tasks to run daily
         Runnable task = this::processPayrollTasks;
         scheduler.scheduleAtFixedRate(task, 0, 24, TimeUnit.HOURS);
     }
 
+    /**
+     * Method to process all payroll tasks that are scheduled
+     */
     private void processPayrollTasks() {
         LocalDate today = LocalDate.now();
             
@@ -49,6 +60,11 @@ public class PayrollScheduler {
         }
     }
 
+    /**
+     * Boolean method for checking if it is currently before the second Friday of the month
+     * @param date - current date
+     * @return True if date is before second Friday, False otherwise
+     */
     private boolean isBeforeSecondFriday(LocalDate date) {
         LocalDate firstDay = date.withDayOfMonth(1);
         LocalDate firstFriday = firstDay.with(TemporalAdjusters.nextOrSame(DayOfWeek.FRIDAY));
@@ -60,8 +76,9 @@ public class PayrollScheduler {
     }
 
     
-    
-
+    /**
+     * Method for automatically generating payslips
+     */
     private void generatePayslips() {
         LocalDate today = LocalDate.now();
     

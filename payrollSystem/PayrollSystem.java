@@ -25,11 +25,19 @@ public class PayrollSystem {
     private static final String PAYSLIP_FILE = "payslips.csv";
 
     // Constructor
+    /**
+     * PayrollSystem constructor
+     * @param roleFactory - the RoleFactory class
+     */
     public PayrollSystem(RoleFactory roleFactory) {
         this.roleFactory = roleFactory;
     }
 
-    // Method to calculate net pay after all deductions
+    /**
+     * Method for calculating the net pay of an employee
+     * @param user - the current user
+     * @return the net pay
+     */
     public double calculateNetPay(User user) {
         String role = user.getPosition();
         int scalePoint = user.getScalePoint();
@@ -54,7 +62,10 @@ public class PayrollSystem {
         return netPay;
     }
 
-    // Method to print the payslip
+    /**
+     * Method to print a payslip in the correct format
+     * @param user - the current user
+     */
     public void printPayslip(User user) {
         calculateNetPay(user);
         LocalDate currentdate = LocalDate.now();
@@ -70,7 +81,10 @@ public class PayrollSystem {
         
     }
 
-    // Method to save payslip to CSV
+    /**
+     * Method to save a payslip to a CSV in the correct format
+     * @param user - the current user
+     */
     public void savePayslipToCSV(User user) {
         calculateNetPay(user);
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(PAYSLIP_FILE, true))) {
@@ -90,7 +104,10 @@ public class PayrollSystem {
         }
     }
 
-    // Method to read payslips from CSV
+    /**
+     * Method to read and print the current user's payslips from the CSV
+     * @param user - the current user
+     */
     public void readPayslipsFromCSV(User user) {
         try (BufferedReader reader = new BufferedReader(new FileReader(PAYSLIP_FILE))) {
             String line;
@@ -123,17 +140,23 @@ public class PayrollSystem {
     }
 
 
-    // Method to calculate health insurance
+    /**
+     * Method to calculate health insurance deduction
+     */
     private void calculateHealthInsurance() {
         this.healthInsurance = this.grossPay * 0.02;
     }
 
-    // Method to calculate union fees
+    /**
+     * Method to calculate union fees deduction
+     */
     private void calculateUnionFees() {
         this.unionFees = 10.0;
     }
 
-    // Method to calculate USC
+    /**
+     * Method to calculate USC deduction
+     */
     private void calculateUSC() {
         if (this.grossPay <= 12012) {
             this.usc = this.grossPay * 0.005;
@@ -155,7 +178,9 @@ public class PayrollSystem {
         }
     }
 
-    // Method to calculate income tax
+    /**
+     * Method to calculate income tax deduction
+     */
     private void calculateIncomeTax() {
         if (this.grossPay <= 36800) {
             this.incomeTax = this.grossPay * 0.20;
@@ -166,7 +191,9 @@ public class PayrollSystem {
         }
     }
 
-    // Method to calculate PRSI
+    /**
+     * Method to calculate PRSI deduction
+     */
     private void calculatePRSI() {
         if(grossPay/52 <= 352){
             this.prsi = 0;
@@ -175,6 +202,11 @@ public class PayrollSystem {
         }
     }
 
+    /**
+     * Method for getting the role type: P = Part-time and F = Full-time
+     * @param role
+     * @return
+     */
     public String getRoleType(String role){
         if ("F".equals(roleFactory.getRoleType(role))){
             return "F";

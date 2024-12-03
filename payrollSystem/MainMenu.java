@@ -11,6 +11,10 @@ import java.util.*;
  */
 
 public class MainMenu {
+    /**
+     * Main method for interacting with the payroll system
+     * @param args
+     */
     public static void main(String[] args) {
         String filePath = "users.csv"; // Path to the CSV file
         LoginSystem loginSystem = new LoginSystem(filePath);

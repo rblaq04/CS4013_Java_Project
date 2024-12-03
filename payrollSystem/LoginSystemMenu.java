@@ -15,6 +15,11 @@ public class LoginSystemMenu {
     private final PayrollScheduler payrollScheduler;
 
     // Constructor
+    /**
+     * LoginSystemMenu constructor
+     * @param loginSystem - the LoginSystem class
+     * @param payrollSystem - the PayrollSystem class
+     */
     public LoginSystemMenu(LoginSystem loginSystem, PayrollSystem payrollSystem) {
         this.loginSystem = loginSystem;
         this.payrollSystem = payrollSystem;
@@ -23,6 +28,9 @@ public class LoginSystemMenu {
     }
 
     // Start the CLI
+    /**
+     * Method for starting the system and taking user inputs on further actions
+     */
     public void start() {
         Scanner scanner = new Scanner(System.in);
         while (true) {
@@ -44,6 +52,10 @@ public class LoginSystemMenu {
         }
     }
 
+    /**
+     * Method for logging users in - takes user input of username and password
+     * @param scanner - scanner for user input
+     */
     private void handleLogin(Scanner scanner) {
         System.out.println("Enter username:");
         String username = scanner.nextLine();
@@ -59,6 +71,11 @@ public class LoginSystemMenu {
         }
     }
 
+    /**
+     * Method for handling user actions based on the user type (Employee, Admin or HR)
+     * @param scanner - scanner for taking user input
+     * @param user - the current user
+     */
     private void handleUserActions(Scanner scanner, User user) {
         // Handle the actions for different userTypes
         switch (user.getUserType()) {
@@ -84,6 +101,11 @@ public class LoginSystemMenu {
         }
     }
 
+    /**
+     * Method for handling actions that employees can take
+     * @param scanner - scanner for taking user input
+     * @param user - the current user
+     */
     private void handleEmployeeActions(Scanner scanner, User user) {
         while (true) {
             System.out.println("\nEmployee Menu:");
@@ -107,6 +129,11 @@ public class LoginSystemMenu {
         }
     }
 
+    /**
+     * Method for handling actions that part-time employees can take
+     * @param scanner - scanner for taking user input
+     * @param user - the current user
+     */
     private void handlePartTimeEmployeeActions(Scanner scanner, User user) {
         while (true) {
             System.out.println("\nEmployee Menu:");
@@ -138,6 +165,10 @@ public class LoginSystemMenu {
         }
     }
 
+    /**
+     * Method for handling actions that admins can take
+     * @param scanner - scanner for taking user input
+     */
     private void handleAdminActions(Scanner scanner) {
         while (true) {
             System.out.println("\nAdmin Menu:");
@@ -181,6 +212,10 @@ public class LoginSystemMenu {
         }
     }
 
+    /**
+     * Method for handling actions that HR users can take
+     * @param scanner - scanner for taking user input
+     */
     private void handleHRActions(Scanner scanner) {
         while (true) {
             System.out.println("\nHR Menu:");
@@ -201,6 +236,10 @@ public class LoginSystemMenu {
         }
     }
 
+    /**
+     * Method for implementing a promotion - can only be accessed by HR user
+     * @param scanner - scanner for taking user input
+     */
     private void implementPromotion(Scanner scanner) {
         System.out.print("Enter the username of the employee to promote: ");
         String username = scanner.nextLine();
