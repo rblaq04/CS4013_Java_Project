@@ -88,7 +88,7 @@ public class LoginSystemMenu {
     private void handleEmployeeActions(Scanner scanner, User user) {
         while (true) {
             System.out.println("\nEmployee Menu:");
-            System.out.println("1. View Most Recent Payslip\n2. View Historical Payslips");
+            System.out.println("1. View Most Recent Payslip\n2. View Historical Payslips\n3. Logout");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume newline
@@ -132,7 +132,7 @@ public class LoginSystemMenu {
                     payrollScheduler.submitClaim(user);
                     break;
                 case 4:
-                return; // Logout
+                    return; // Logout
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
