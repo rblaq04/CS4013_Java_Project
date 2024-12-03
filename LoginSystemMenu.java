@@ -80,7 +80,7 @@ public class LoginSystemMenu {
                     payrollSystem.printPayslip(user); // Use PayrollSystem to print payslip
                     break;
                 case 2:
-                    payrollSystem.readPayslipsFromCSV();
+                    payrollSystem.readPayslipsFromCSV(user);
                 case 3:
                     return; // Logout
                 default:
