@@ -49,6 +49,9 @@ public class PayrollSystem {
     // Method to print the payslip
     public void printPayslip(User user) {
         calculateNetPay(user);
+        LocalDate currentdate = LocalDate.now();
+        Month currentMonth = currentdate.getMonth();
+        System.out.printf("Payslip for %s - %s%n", user.getUsername(), currentMonth);
         System.out.printf("Gross Pay: €%.2f%n", this.grossPay);
         System.out.printf("Health Insurance: €%.2f%n", this.healthInsurance);
         System.out.printf("Union Fees: €%.2f%n", this.unionFees);
