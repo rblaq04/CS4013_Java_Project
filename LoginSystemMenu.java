@@ -58,6 +58,7 @@ public class LoginSystemMenu {
                 }
                 else {
                     handlePartTimeEmployeeActions(scanner, user);
+                    break;
                 }
             case "HR":
                 handleEmployeeActions(scanner, user); // HR can also access Employee options
@@ -86,6 +87,7 @@ public class LoginSystemMenu {
                     break;
                 case 2:
                     payrollSystem.readPayslipsFromCSV(user);
+                    break;
                 case 3:
                     return; // Logout
                 default:
@@ -108,12 +110,14 @@ public class LoginSystemMenu {
                     break;
                 case 2:
                     payrollSystem.readPayslipsFromCSV(user);
+                    break;
                 case 3:
                     System.out.println("Enter hours worked for current month: ");
                     String payClaimForm = scanner.nextLine();
                     double hrsWorked = Double.parseDouble(payClaimForm);
                     user.addHrsWorked(hrsWorked);
                     user.setCurrentClaim(true);
+                    break;
                 case 4:
                 return; // Logout
                 default:
