@@ -32,7 +32,7 @@ public class LoginSystemMenu {
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
-            }
+            }   
         }
     }
 
@@ -154,9 +154,9 @@ public class LoginSystemMenu {
                         userType = "Employee";
                     } else {userType = "Employee";}
                     System.out.println("Enter position:");
-                    String position = scanner.nextLine();
+                    String position = scanner.nextLine().toUpperCase();
                     System.out.println("Enter roleType ((F)ull-time/(P)art-time):");
-                    String roleType = scanner.nextLine();
+                    String roleType = scanner.nextLine().toUpperCase();
                     System.out.println("Enter hours worked so far (can be 0):");
                     String stringHrsWorked = scanner.nextLine();
                     double hrsWorked = Double.parseDouble(stringHrsWorked);
