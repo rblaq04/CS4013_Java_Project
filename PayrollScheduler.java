@@ -25,12 +25,12 @@ public class PayrollScheduler {
 
     private void processPayrollTasks() {
         LocalDate today = LocalDate.now();
-
+            
         resetPartTimeClaims();
 
         // Check if today is the second Friday of the month
         if (isSecondFriday(today)) {
-            System.out.println("Second Friday: Reminder to part-time employees to submit pay claims.");
+            validatePartTimeClaims();
        
         }
 
